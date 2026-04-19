@@ -7,5 +7,6 @@ variable "aws_region" {
 }
 
 variable "suffix" {
-  type = string
+  type    = string
+  default = "dev123"
 }
