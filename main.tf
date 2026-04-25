@@ -23,7 +23,7 @@ module "s3_bucket" {
   source  = "terraform-aws-modules/s3-bucket/aws"
   version = "5.12.0"
 
-  bucket = "my-unique-bucket-name"
+  bucket = "maryam-shahid-${var.suffix}"
 
   versioning = {
     enabled = true
