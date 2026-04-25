@@ -1,11 +1,11 @@
 terraform {
-  cloud {
-    organization = "acme-demo-tf"
+  # cloud {
+  #   organization = "acme-demo-tf"
 
-    workspaces {
-      name = "acme-terraform-dev"
-    }
-  }
+  #   workspaces {
+  #     name = "acme-terraform-dev"
+  #   }
+  # }
 
   required_providers {
     aws = {
