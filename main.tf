@@ -12,6 +12,11 @@ terraform {
       source  = "hashicorp/aws"
       version = "6.42.0"
     }
+
+    google = {
+      source  = "hashicorp/google"
+      version = "7.29.0"
+    }
   }
 }
 
@@ -19,13 +24,13 @@ provider "aws" {
   region = var.aws_region
 }
 
-module "s3_bucket" {
-  source  = "terraform-aws-modules/s3-bucket/aws"
-  version = "5.12.0"
+# module "s3_bucket" {
+#   source  = "terraform-aws-modules/s3-bucket/aws"
+#   version = "5.12.0"
 
-  bucket = "maryam-shahid-${var.suffix}"
+#   bucket = "maryam-shahid-${var.suffix}"
 
-  versioning = {
-    enabled = true
-  }
-}
+#   versioning = {
+#     enabled = true
+#   }
+# }
