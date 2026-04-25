@@ -19,7 +19,13 @@ provider "aws" {
   region = var.aws_region
 }
 
-module "s3-bucket" {
-source  = "terraform-aws-modules/s3-bucket/aws"
-version = "5.12.0"
+module "s3_bucket" {
+  source  = "terraform-aws-modules/s3-bucket/aws"
+  version = "5.12.0"
+
+  bucket = "my-unique-bucket-name"
+
+  versioning = {
+    enabled = true
+  }
 }
