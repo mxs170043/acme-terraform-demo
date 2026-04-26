@@ -10,7 +10,7 @@ terraform {
   required_providers {
     aws = {
       source  = "hashicorp/aws"
-      version = "~> 5.0"
+      version = "6.42.0"
     }
   }
 }
@@ -19,9 +19,13 @@ provider "aws" {
   region = var.aws_region
 }
 
-module "app_bucket" {
-  source      = "../../modules/s3-bucket"
-  environment = var.environment
-  bucket_name = "acme-app-data"
-  suffix      = var.suffix
+module "s3_bucket" {
+  source  = "terraform-aws-modules/s3-bucket/aws"
+  version = "5.12.0"
+
+  bucket = "maryam-shahid-${var.suffix}"
+
+  versioning = {
+    enabled = true
+  }
 }
