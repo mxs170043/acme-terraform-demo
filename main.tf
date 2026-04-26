@@ -40,24 +40,6 @@ module "s3_bucket" {
   }
 }
 
-# module "instance_template" {
-#   source  = "terraform-google-modules/vm/google//modules/instance_template"
-#   version = "~> 13.0"
-
-#   project_id   = var.project_id
-#   region       = var.region
-#   machine_type = "e2-micro"
-# }
-
-# module "compute_instance" {
-#   source  = "terraform-google-modules/vm/google//modules/compute_instance"
-#   version = "~> 14.0"
-
-#   project_id        = var.project_id
-#   region            = var.region
-#   zone              = var.zone
-#   instance_template = module.instance_template.self_link
-# }
 resource "google_storage_bucket" "this" {
   name     = "acme-demo-bucket-${var.suffix}"
   location = var.region
