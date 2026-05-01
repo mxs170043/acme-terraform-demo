@@ -39,6 +39,18 @@ module "s3_bucket" {
     enabled = true
   }
 }
+module "s3_bucket_2" { //update module name
+  source  = "terraform-aws-modules/s3-bucket/aws"
+  version = "5.12.0"
+
+  bucket = "maryam--${var.suffix}" // update bucket name
+
+  versioning = {
+    enabled = true
+  }
+}
+
+
 
 resource "google_storage_bucket" "this" {
   name     = "acme-demo-bucket-${var.suffix}"
