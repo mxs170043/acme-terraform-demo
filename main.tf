@@ -1,11 +1,11 @@
 terraform {
-  # cloud {
-  #   organization = "acme-demo-tf"
+  cloud {
+    organization = "acme-demo-tf"
 
-  #   workspaces {
-  #     name = "acme-terraform-dev"
-  #   }
-  # }
+    workspaces {
+      name = "acme-terraform-dev"
+    }
+  }
 
   required_providers {
     aws = {
@@ -39,17 +39,16 @@ module "s3_bucket" {
     enabled = true
   }
 }
-module "s3_bucket_2" { //update module name
+module "s3_bucket_2" { 
   source  = "terraform-aws-modules/s3-bucket/aws"
   version = "5.12.0"
 
-  bucket = "maryam--${var.suffix}" // update bucket name
+  bucket = "maryam--${var.suffix}" 
 
   versioning = {
     enabled = true
   }
 }
-
 
 
 resource "google_storage_bucket" "this" {
