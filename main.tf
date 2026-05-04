@@ -26,25 +26,35 @@ module "s3_bucket" {
   source  = "terraform-aws-modules/s3-bucket/aws"
   version = "5.12.0"
 
-  bucket = "maryam-shahid${var.suffix}"
+  bucket = "demo-bucket-${var.suffix}"
 
   versioning = {
     enabled = true
   }
 }
-# module "s3_bucket_3" { 
-#   source  = "terraform-aws-modules/s3-bucket/aws"
-#   version = "5.12.0"
+module "s3_bucket_3" { 
+  source  = "terraform-aws-modules/s3-bucket/aws"
+  version = "5.12.0"
 
-#   bucket = "maryam--x${var.suffix}" 
+  bucket = "maryam--x${var.suffix}" 
 
-#   versioning = {
-#     enabled = true
-#   }
-# } 
+  versioning = {
+    enabled = true
+  }
+} 
 
 resource "google_storage_bucket" "this" {
   name     = "acme-demo-bucket-${var.suffix}"
+  location = var.region
+
+  labels = {
+    environment = "dev"
+    managed_by  = "terraform"
+  }
+  
+}
+resource "google_storage_bucket" "this" {
+  name     = "acme-demo-bucket2-${var.suffix}"
   location = var.region
 
   labels = {
