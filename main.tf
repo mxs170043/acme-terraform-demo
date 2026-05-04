@@ -44,16 +44,6 @@ module "s3_bucket_3" {
 } 
 
 resource "google_storage_bucket" "this" {
-  name     = "acme-demo-bucket-${var.suffix}"
-  location = var.region
-
-  labels = {
-    environment = "dev"
-    managed_by  = "terraform"
-  }
-  
-}
-resource "google_storage_bucket" "this" {
   name     = "acme-demo-bucket2-${var.suffix}"
   location = var.region
 
