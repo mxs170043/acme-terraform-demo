@@ -1,11 +1,4 @@
 terraform {
-  cloud {
-    organization = "acme-demo-tf"
-
-    workspaces {
-      name = "acme-terraform-dev"
-    }
-  }
 
   required_providers {
     aws = {
@@ -29,16 +22,16 @@ provider "google" {
   region  = var.region
 }
 
-# module "s3_bucket" {
-#   source  = "terraform-aws-modules/s3-bucket/aws"
-#   version = "5.12.0"
+module "s3_bucket" {
+  source  = "terraform-aws-modules/s3-bucket/aws"
+  version = "5.12.0"
 
-#   bucket = "maryam-shahid${var.suffix}"
+  bucket = "maryam-shahid${var.suffix}"
 
-#   versioning = {
-#     enabled = true
-#   }
-# }
+  versioning = {
+    enabled = true
+  }
+}
 # module "s3_bucket_3" { 
 #   source  = "terraform-aws-modules/s3-bucket/aws"
 #   version = "5.12.0"
@@ -48,8 +41,7 @@ provider "google" {
 #   versioning = {
 #     enabled = true
 #   }
-# }
-
+# } 
 
 resource "google_storage_bucket" "this" {
   name     = "acme-demo-bucket-${var.suffix}"
