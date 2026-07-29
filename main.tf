@@ -5,21 +5,11 @@ terraform {
       source  = "hashicorp/aws"
       version = "6.42.0"
     }
-
-    google = {
-      source  = "hashicorp/google"
-      version = "7.29.0"
-    }
   }
 }
 
 provider "aws" {
   region = var.aws_region
-}
-
-provider "google" {
-  project = var.project_id
-  region  = var.region
 }
 
 module "s3_bucket" {
@@ -42,13 +32,3 @@ module "s3_bucket_3" {
     enabled = true
   }
 } 
-
-resource "google_storage_bucket" "this" {
-  name     = "acme-demo-bucket2-${var.suffix}"
-  location = var.region
-
-  labels = {
-    environment = "dev"
-    managed_by  = "terraform"
-  }
-}
